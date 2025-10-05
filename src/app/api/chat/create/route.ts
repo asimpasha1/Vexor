@@ -64,7 +64,7 @@ export async function POST(request: NextRequest) {
     const chats = await readChats()
     
     // التحقق من وجود محادثة نشطة للمستخدم
-    let existingChat = chats.find(
+    const existingChat = chats.find(
       chat => chat.userEmail === userEmail && chat.status === 'active'
     )
 

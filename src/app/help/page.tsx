@@ -1,5 +1,4 @@
 import { Metadata } from 'next'
-import DashboardLayout from '@/components/layout/dashboard-layout'
 
 export const metadata: Metadata = {
   title: 'Help Center | Digital Market',
@@ -26,7 +25,7 @@ export default function HelpPage() {
                   كيف يمكنني إنشاء حساب جديد؟
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400">
-                  يمكنك إنشاء حساب جديد بالضغط على زر "تسجيل" في أعلى الصفحة، ثم ملء البيانات المطلوبة.
+                  يمكنك إنشاء حساب جديد بالضغط على زر &ldquo;تسجيل&rdquo; في أعلى الصفحة، ثم ملء البيانات المطلوبة.
                 </p>
               </div>
               
@@ -35,7 +34,7 @@ export default function HelpPage() {
                   كيف يمكنني شراء المنتجات؟
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400">
-                  بعد تسجيل الدخول، يمكنك تصفح المنتجات واختيار ما تريد شراؤه، ثم الضغط على "شراء الآن".
+                  بعد تسجيل الدخول، يمكنك تصفح المنتجات واختيار ما تريد شراؤه، ثم الضغط على &ldquo;شراء الآن&rdquo;.
                 </p>
               </div>
               

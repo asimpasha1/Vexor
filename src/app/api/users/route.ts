@@ -8,7 +8,7 @@ export async function GET() {
     
     // جلب المستخدمين من قاعدة البيانات الحقيقية
     console.log("📊 جلب من قاعدة البيانات...")
-    let users = await prisma.user.findMany({
+    const users = await prisma.user.findMany({
       select: {
         id: true,
         name: true,

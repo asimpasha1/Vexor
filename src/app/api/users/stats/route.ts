@@ -29,7 +29,7 @@ export async function GET() {
     let totalUsers = 0
     let totalAdmins = 0
     let totalRegularUsers = 0
-    let totalModerators = 0
+    const totalModerators = 0
 
     // من قاعدة البيانات
     dbStats.forEach(stat => {
