@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, Suspense } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
 import { motion } from "framer-motion"
 import { 
@@ -48,6 +48,21 @@ interface FormErrors {
 }
 
 export default function CheckoutPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <Loader2 className="w-8 h-8 animate-spin mx-auto mb-4 text-blue-600" />
+          <p className="text-gray-600">جاري تحميل صفحة الدفع...</p>
+        </div>
+      </div>
+    }>
+      <CheckoutPageContent />
+    </Suspense>
+  )
+}
+
+function CheckoutPageContent() {
   const searchParams = useSearchParams()
   const router = useRouter()
   const { success, error: showError } = useToast()

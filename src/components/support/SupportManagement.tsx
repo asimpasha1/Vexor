@@ -460,7 +460,7 @@ export default function SupportManagement({ openChatId, openContactId }: Support
                   </div>
                   {rating.comment && (
                     <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
-                      "{rating.comment}"
+                      &quot;{rating.comment}&quot;
                     </p>
                   )}
                   <p className="text-xs text-gray-500">
@@ -536,7 +536,7 @@ export default function SupportManagement({ openChatId, openContactId }: Support
                   </div>
                   {rating.comment && (
                     <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
-                      "{rating.comment}"
+                      &quot;{rating.comment}&quot;
                     </p>
                   )}
                   <p className="text-xs text-gray-500">

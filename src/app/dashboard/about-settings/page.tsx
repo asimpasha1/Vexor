@@ -293,10 +293,10 @@ export default function AboutSettingsPage() {
           <div>
             <h1 className="text-3xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
               <Info className="h-8 w-8 text-blue-500" />
-              إعدادات صفحة "من نحن"
+              إعدادات صفحة &quot;من نحن&quot;
             </h1>
             <p className="text-gray-600 dark:text-gray-300 mt-2">
-              قم بتخصيص محتوى صفحة "من نحن" لتناسب شركتك
+              قم بتخصيص محتوى صفحة &quot;من نحن&quot; لتناسب شركتك
             </p>
           </div>
           

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, Suspense } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
 import { motion } from "framer-motion"
 import { 
@@ -9,7 +9,8 @@ import {
   Mail, 
   Home,
   Copy,
-  ExternalLink
+  ExternalLink,
+  Loader2
 } from "lucide-react"
 import Link from "next/link"
 import { useToast } from "@/components/providers/toast-provider"
@@ -25,6 +26,21 @@ interface Product {
 }
 
 export default function OrderConfirmationPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <Loader2 className="w-8 h-8 animate-spin mx-auto mb-4 text-blue-600" />
+          <p className="text-gray-600">جاري تحميل تأكيد الطلب...</p>
+        </div>
+      </div>
+    }>
+      <OrderConfirmationContent />
+    </Suspense>
+  )
+}
+
+function OrderConfirmationContent() {
   const searchParams = useSearchParams()
   const router = useRouter()
   const { success, error: showError } = useToast()

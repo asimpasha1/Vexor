@@ -32,7 +32,7 @@ export async function GET() {
       id: user.id,
       name: user.name,
       email: user.email,
-      role: user.role as any, // تحويل نوع البيانات
+      role: user.role as string, // تحويل نوع البيانات
       createdAt: new Date(user.createdAt),
       emailVerified: null
     }))
@@ -44,7 +44,7 @@ export async function GET() {
     tempUsersMapped.forEach(tempUser => {
       const exists = users.find(user => user.email === tempUser.email)
       if (!exists) {
-        allUsers.push(tempUser as any)
+        allUsers.push(tempUser as { id: string; name: string; email: string; role: string; createdAt: Date; emailVerified: null; })
         console.log("➕ إضافة مستخدم مؤقت:", tempUser.email)
       } else {
         console.log("🔄 مستخدم موجود مسبقاً:", tempUser.email)
@@ -64,7 +64,7 @@ export async function GET() {
       id: user.id,
       name: user.name,
       email: user.email,
-      role: user.role as any,
+      role: user.role as string,
       createdAt: new Date(user.createdAt),
       emailVerified: null
     }))

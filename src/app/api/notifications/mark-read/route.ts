@@ -15,7 +15,13 @@ function getStoredNotifications() {
   return [];
 }
 
-function saveNotifications(notifications: any[]) {
+function saveNotifications(notifications: Array<{
+  id: string;
+  message: string;
+  type: string;
+  timestamp: string;
+  read: boolean;
+}>) {
   try {
     fs.writeFileSync(NOTIFICATIONS_FILE, JSON.stringify(notifications, null, 2));
     return true;
@@ -37,7 +43,7 @@ export async function POST(request: NextRequest) {
     }
 
     const notifications = getStoredNotifications();
-    const notificationIndex = notifications.findIndex((n: any) => n.id === notificationId);
+    const notificationIndex = notifications.findIndex((n: { id: string }) => n.id === notificationId);
     
     if (notificationIndex === -1) {
       return NextResponse.json(

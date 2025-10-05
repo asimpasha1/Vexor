@@ -17,16 +17,16 @@ export async function GET(
     console.log('  - Session exists:', !!session)
     console.log('  - User:', session?.user ? {
       email: session.user.email,
-      role: (session.user as any).role
+      role: (session.user as { role: string }).role
     } : 'No user')
     
     // إعداد شروط البحث
-    const whereConditions: any = {
+    const whereConditions: { id: string; active?: boolean; } = {
       id: id
     }
     
     // إذا لم يكن المستخدم أدمن، اعرض المنتجات النشطة فقط
-    if (!session?.user || (session.user as any).role !== 'ADMIN') {
+    if (!session?.user || (session.user as { role: string }).role !== 'ADMIN') {
       whereConditions.active = true
       console.log('  - Non-admin user, adding active=true condition')
     } else {
@@ -77,10 +77,10 @@ export async function PUT(
     console.log("🔍 Product Update - Session Check:")
     console.log("Session exists:", !!session)
     console.log("User:", session?.user)
-    console.log("User role:", (session?.user as any)?.role)
+    console.log("User role:", (session?.user as { role?: string })?.role)
     
-    if (!session || (session.user as any)?.role !== "ADMIN") {
-      console.log("❌ Access denied - User role:", (session?.user as any)?.role)
+    if (!session || (session.user as { role?: string })?.role !== "ADMIN") {
+      console.log("❌ Access denied - User role:", (session?.user as { role?: string })?.role)
       return NextResponse.json(
         { error: "غير مصرح - لا يوجد لديك صلاحيات لتعديل المنتجات" },
         { status: 401 }

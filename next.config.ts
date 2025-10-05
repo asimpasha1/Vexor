@@ -8,13 +8,13 @@ const nextConfig: NextConfig = {
     },
   },
   
-  // تعطيل فحص الأخطاء للنشر
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
+  // سنصلح الأخطاء بدلاً من تجاهلها
+  // eslint: {
+  //   ignoreDuringBuilds: true,
+  // },
+  // typescript: {
+  //   ignoreBuildErrors: true,
+  // },
   
   // تحسين الأداء والصور
   images: {

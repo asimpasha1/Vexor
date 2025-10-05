@@ -52,7 +52,7 @@ function readSettings() {
 }
 
 // كتابة الإعدادات
-function writeSettings(settings: any) {
+function writeSettings(settings: typeof DEFAULT_SETTINGS) {
   try {
     fs.writeFileSync(SETTINGS_FILE, JSON.stringify(settings, null, 2), 'utf8')
     return true

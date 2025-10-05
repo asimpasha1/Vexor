@@ -14,10 +14,10 @@ export async function GET(request: NextRequest) {
 
     const session = await getServerSession(authOptions)
     
-    const where: any = {}
+    const where: { active?: boolean; category?: string; } = {}
 
     // إذا لم يكن المستخدم أدمن أو لم يطلب المنتجات غير النشطة، اعرض النشطة فقط
-    if (!includeInactive || !session?.user || (session.user as any).role !== 'ADMIN') {
+    if (!includeInactive || !session?.user || (session.user as { role: string }).role !== 'ADMIN') {
       where.active = true
     }
 

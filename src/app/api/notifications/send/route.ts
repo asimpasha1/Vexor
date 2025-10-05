@@ -47,7 +47,7 @@ function getStoredNotifications() {
   return [];
 }
 
-function saveNotification(notification: any) {
+function saveNotifications(notifications: Array<{ id: string; message: string; type: string; timestamp: string; read: boolean; }>) {
   try {
     const notifications = getStoredNotifications();
     const newNotification = {
@@ -83,7 +83,7 @@ export async function POST(request: NextRequest) {
     }
 
     const settings = getNotificationSettings();
-    const results: any = {
+    const results: { [key: string]: string | number | boolean } = {
       type,
       emailSent: false,
       pushSent: false,
@@ -165,7 +165,7 @@ export async function GET() {
       notifications: Array.isArray(notifications) ? notifications : [],
       settings,
       count: Array.isArray(notifications) ? notifications.length : 0,
-      unreadCount: Array.isArray(notifications) ? notifications.filter((n: any) => !n.read).length : 0
+      unreadCount: Array.isArray(notifications) ? notifications.filter((n: { read: boolean }) => !n.read).length : 0
     });
   } catch (error) {
     console.error('Error in GET notifications:', error);
@@ -183,7 +183,7 @@ export async function GET() {
   }
 }
 
-function getNotificationTitle(type: string, data: any): string {
+function getNotificationTitle(type: string, data: { [key: string]: string | number | boolean }): string {
   switch (type) {
     case 'newOrder':
       return `طلب جديد رقم ${data.orderNumber}`;
@@ -196,7 +196,7 @@ function getNotificationTitle(type: string, data: any): string {
   }
 }
 
-function getNotificationMessage(type: string, data: any): string {
+function getNotificationMessage(type: string, data: { [key: string]: string | number | boolean }): string {
   switch (type) {
     case 'newOrder':
       return `طلب جديد من ${data.customerName} بقيمة $${data.amount}`;

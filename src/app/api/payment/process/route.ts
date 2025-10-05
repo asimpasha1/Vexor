@@ -116,25 +116,25 @@ export async function POST(request: NextRequest) {
         throw new Error('فشل في معالجة الدفع')
       }
 
-    } catch (cardError: any) {
+    } catch (cardError: unknown) {
       // إلغاء Payment Intent في حالة فشل معالجة الكارت
       await stripe.paymentIntents.cancel(paymentIntent.id)
       
       return NextResponse.json(
         { 
           error: 'خطأ في بيانات الكارت', 
-          details: cardError.message 
+          details: cardError instanceof Error ? cardError.message : 'خطأ غير معروف' 
         },
         { status: 400 }
       )
     }
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Payment processing error:', error)
     return NextResponse.json(
       { 
         error: 'حدث خطأ في معالجة الدفع', 
-        details: error.message 
+        details: error instanceof Error ? error.message : 'خطأ غير معروف' 
       },
       { status: 500 }
     )

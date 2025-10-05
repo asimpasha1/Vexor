@@ -23,7 +23,7 @@ export async function GET(request: NextRequest) {
     // }
 
     // قراءة حالة الإشعارات المحفوظة
-    let notifications: any[] = []
+    let notifications: Array<{ id: string; message: string; type: string; timestamp: string; read: boolean; }> = []
     try {
       // التأكد من وجود مجلد data
       const dataDir = path.dirname(NOTIFICATIONS_FILE)

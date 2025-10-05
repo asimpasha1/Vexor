@@ -25,7 +25,7 @@ export async function GET(request: NextRequest) {
     }
 
     // التحقق من أن المستخدم مدير
-    if ((session.user as any).role !== "ADMIN") {
+    if ((session.user as { role: string }).role !== "ADMIN") {
       return NextResponse.json(
         { error: "هذه الصفحة مخصصة للمديرين فقط" },
         { status: 403 }

@@ -2,9 +2,9 @@
 
 import { useSession } from "next-auth/react"
 import { useRouter, useSearchParams } from "next/navigation"
-import { useEffect, useState } from "react"
+import { useEffect, useState, Suspense } from "react"
 import { motion } from "framer-motion"
-import { Users, Shield, Mail, Calendar, RefreshCw } from "lucide-react"
+import { Users, Shield, Mail, Calendar, RefreshCw, Loader2 } from "lucide-react"
 import DynamicMetadata from "@/components/DynamicMetadata"
 import { useSettings } from "@/hooks/useSettings"
 import SupportManagement from "@/components/support/SupportManagement"
@@ -18,6 +18,21 @@ interface User {
 }
 
 export default function AdminPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <Loader2 className="w-8 h-8 animate-spin mx-auto mb-4 text-blue-600" />
+          <p className="text-gray-600">جاري تحميل لوحة التحكم...</p>
+        </div>
+      </div>
+    }>
+      <AdminPageContent />
+    </Suspense>
+  )
+}
+
+function AdminPageContent() {
   const { siteName, loading: settingsLoading } = useSettings()
   const { data: session, status } = useSession()
   const router = useRouter()
@@ -34,7 +49,7 @@ export default function AdminPage() {
       return
     }
     
-    if (session?.user && (session.user as any).role !== "ADMIN") {
+    if (session?.user && (session.user as { role: string }).role !== "ADMIN") {
       router.push("/")
       return
     }
@@ -86,7 +101,7 @@ export default function AdminPage() {
     )
   }
 
-  if (!session?.user || (session.user as any).role !== "ADMIN") {
+  if (!session?.user || (session.user as { role: string }).role !== "ADMIN") {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 flex items-center justify-center">
         <div className="text-center">
