@@ -1,0 +1,312 @@
+[
+  {
+    "id": "1757880639829",
+    "userEmail": "admin@digitalmarket.com",
+    "userName": "مدير النظام",
+    "status": "waiting",
+    "createdAt": "2025-09-14T20:10:39.829Z",
+    "updatedAt": "2025-09-14T20:20:17.236Z",
+    "messages": [
+      {
+        "id": "1757880644824",
+        "chatId": "1757880639829",
+        "content": "4ق34",
+        "sender": "user",
+        "timestamp": "2025-09-14T20:10:44.824Z",
+        "status": "sent"
+      },
+      {
+        "id": "1757881217236",
+        "chatId": "1757880639829",
+        "content": "اهلا عزيزي كيف اقدر اخدمك",
+        "sender": "support",
+        "timestamp": "2025-09-14T20:20:17.236Z",
+        "status": "sent"
+      }
+    ]
+  },
+  {
+    "id": "1757881230627",
+    "userEmail": "admin@digitalmarket.com",
+    "userName": "مدير النظام",
+    "status": "waiting",
+    "createdAt": "2025-09-14T20:20:30.627Z",
+    "updatedAt": "2025-09-14T20:23:25.968Z",
+    "messages": [
+      {
+        "id": "1757881368361",
+        "chatId": "1757881230627",
+        "content": "اهلا",
+        "sender": "support",
+        "timestamp": "2025-09-14T20:22:48.361Z",
+        "status": "sent"
+      },
+      {
+        "id": "1757881372179",
+        "chatId": "1757881230627",
+        "content": "اهلا",
+        "sender": "support",
+        "timestamp": "2025-09-14T20:22:52.179Z",
+        "status": "sent"
+      },
+      {
+        "id": "1757881380932",
+        "chatId": "1757881230627",
+        "content": "اهلا",
+        "sender": "user",
+        "timestamp": "2025-09-14T20:23:00.932Z",
+        "status": "sent"
+      },
+      {
+        "id": "1757881395370",
+        "chatId": "1757881230627",
+        "content": "كيفك",
+        "sender": "support",
+        "timestamp": "2025-09-14T20:23:15.370Z",
+        "status": "sent"
+      },
+      {
+        "id": "1757881405968",
+        "chatId": "1757881230627",
+        "content": "انا عاصم ",
+        "sender": "user",
+        "timestamp": "2025-09-14T20:23:25.968Z",
+        "status": "sent"
+      }
+    ]
+  },
+  {
+    "id": "1757881462021",
+    "userEmail": "admin@digitalmarket.com",
+    "userName": "مدير النظام",
+    "status": "waiting",
+    "createdAt": "2025-09-14T20:24:22.021Z",
+    "updatedAt": "2025-09-15T05:04:49.641Z",
+    "messages": [
+      {
+        "id": "1757912588562",
+        "chatId": "1757881462021",
+        "content": "السلام عليكم ",
+        "sender": "user",
+        "timestamp": "2025-09-15T05:03:08.562Z",
+        "status": "sent"
+      },
+      {
+        "id": "1757912621992",
+        "chatId": "1757881462021",
+        "content": "اهلا وسهلا عزيزي تفضل ؟؟",
+        "sender": "support",
+        "timestamp": "2025-09-15T05:03:41.992Z",
+        "status": "sent"
+      },
+      {
+        "id": "1757912643738",
+        "chatId": "1757881462021",
+        "content": "كنت اواجه مشكلة في شراء المنتج ",
+        "sender": "user",
+        "timestamp": "2025-09-15T05:04:03.738Z",
+        "status": "sent"
+      },
+      {
+        "id": "1757912689641",
+        "chatId": "1757881462021",
+        "content": "عد تشغيل المتصفح وادخل من متسفح جوجل عزيزي ",
+        "sender": "support",
+        "timestamp": "2025-09-15T05:04:49.641Z",
+        "status": "sent"
+      }
+    ]
+  },
+  {
+    "id": "1757913276819",
+    "userEmail": "guest@example.com",
+    "userName": "زائر",
+    "status": "waiting",
+    "createdAt": "2025-09-15T05:14:36.819Z",
+    "updatedAt": "2025-09-15T16:17:24.652Z",
+    "messages": [
+      {
+        "id": "1757953021581",
+        "chatId": "1757913276819",
+        "content": "اهلا",
+        "sender": "user",
+        "timestamp": "2025-09-15T16:17:01.582Z",
+        "status": "sent"
+      },
+      {
+        "id": "1757953044652",
+        "chatId": "1757913276819",
+        "content": "اهلا",
+        "sender": "user",
+        "timestamp": "2025-09-15T16:17:24.652Z",
+        "status": "sent"
+      }
+    ]
+  },
+  {
+    "id": "1757913785439",
+    "userEmail": "admin@digitalmarket.com",
+    "userName": "مدير النظام",
+    "status": "waiting",
+    "createdAt": "2025-09-15T05:23:05.439Z",
+    "updatedAt": "2025-09-15T20:11:01.846Z",
+    "messages": [
+      {
+        "id": "1757913792821",
+        "chatId": "1757913785439",
+        "content": "اهلا",
+        "sender": "user",
+        "timestamp": "2025-09-15T05:23:12.821Z",
+        "status": "sent"
+      },
+      {
+        "id": "1757962256587",
+        "chatId": "1757913785439",
+        "content": "اهلا",
+        "sender": "user",
+        "timestamp": "2025-09-15T18:50:56.587Z",
+        "status": "sent"
+      },
+      {
+        "id": "1757966960093",
+        "chatId": "1757913785439",
+        "content": "السلام عليكم",
+        "sender": "user",
+        "timestamp": "2025-09-15T20:09:20.093Z",
+        "status": "sent"
+      }
+    ],
+    "rating": {
+      "id": "1757967061827",
+      "chatId": "1757913785439",
+      "userEmail": "admin@digitalmarket.com",
+      "rating": 5,
+      "comment": "",
+      "createdAt": "2025-09-15T20:11:01.827Z"
+    }
+  },
+  {
+    "id": "1757953395978",
+    "userEmail": "guest@example.com",
+    "userName": "زائر",
+    "status": "closed",
+    "createdAt": "2025-09-15T16:23:15.978Z",
+    "updatedAt": "2025-09-15T19:34:27.110Z",
+    "messages": []
+  },
+  {
+    "id": "1759582025778",
+    "userEmail": "admin@test.com",
+    "userName": "المدير الرئيسي",
+    "status": "waiting",
+    "createdAt": "2025-10-04T12:47:05.778Z",
+    "updatedAt": "2025-10-04T12:47:09.242Z",
+    "messages": [
+      {
+        "id": "1759582029241",
+        "chatId": "1759582025778",
+        "content": "اهلا ",
+        "sender": "user",
+        "timestamp": "2025-10-04T12:47:09.241Z",
+        "status": "sent"
+      }
+    ]
+  },
+  {
+    "id": "1759582250256",
+    "userEmail": "admin@digitalmarket.com",
+    "userName": "مدير النظام",
+    "status": "waiting",
+    "createdAt": "2025-10-04T12:50:50.256Z",
+    "updatedAt": "2025-10-04T12:51:03.937Z",
+    "messages": [
+      {
+        "id": "1759582263937",
+        "chatId": "1759582250256",
+        "content": "اهلا",
+        "sender": "user",
+        "timestamp": "2025-10-04T12:51:03.937Z",
+        "status": "sent"
+      }
+    ]
+  },
+  {
+    "id": "1759582297757",
+    "userEmail": "guest@example.com",
+    "userName": "زائر",
+    "status": "active",
+    "createdAt": "2025-10-04T12:51:37.757Z",
+    "updatedAt": "2025-10-04T12:51:37.757Z",
+    "messages": []
+  },
+  {
+    "id": "1759586931100",
+    "userEmail": "admin@digitalmarket.com",
+    "userName": "مدير النظام",
+    "status": "waiting",
+    "createdAt": "2025-10-04T14:08:51.100Z",
+    "updatedAt": "2025-10-04T14:12:48.018Z",
+    "messages": [
+      {
+        "id": "1759586934090",
+        "chatId": "1759586931100",
+        "content": "اهلا",
+        "sender": "user",
+        "timestamp": "2025-10-04T14:08:54.090Z",
+        "status": "sent"
+      }
+    ],
+    "rating": {
+      "id": "1759587167998",
+      "chatId": "1759586931100",
+      "userEmail": "admin@digitalmarket.com",
+      "rating": 5,
+      "comment": "",
+      "createdAt": "2025-10-04T14:12:47.998Z"
+    }
+  },
+  {
+    "id": "1759620558700",
+    "userEmail": "doodooalmahdi@gmail.com",
+    "userName": "عاصم حسن",
+    "status": "waiting",
+    "createdAt": "2025-10-04T23:29:18.700Z",
+    "updatedAt": "2025-10-04T23:29:26.040Z",
+    "messages": [
+      {
+        "id": "1759620566040",
+        "chatId": "1759620558700",
+        "content": "hgsghl ugd;l ",
+        "sender": "user",
+        "timestamp": "2025-10-04T23:29:26.040Z",
+        "status": "sent"
+      }
+    ]
+  },
+  {
+    "id": "1759657976238",
+    "userEmail": "admin@digitalmarket.com",
+    "userName": "عاصم حسن",
+    "status": "waiting",
+    "createdAt": "2025-10-05T09:52:56.238Z",
+    "updatedAt": "2025-10-05T09:53:05.445Z",
+    "messages": [
+      {
+        "id": "1759657978946",
+        "chatId": "1759657976238",
+        "content": "لاىبلابل",
+        "sender": "user",
+        "timestamp": "2025-10-05T09:52:58.946Z",
+        "status": "sent"
+      }
+    ],
+    "rating": {
+      "id": "1759657985408",
+      "chatId": "1759657976238",
+      "userEmail": "admin@digitalmarket.com",
+      "rating": 5,
+      "comment": "ثصقبصثق",
+      "createdAt": "2025-10-05T09:53:05.408Z"
+    }
+  }
+]

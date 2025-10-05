@@ -1,0 +1,96 @@
+{
+  "general": {
+    "siteName": "Vexor",
+    "siteDescription": "متجر رقمي للكورسات والمنتجات الرقمية",
+    "supportEmail": "support@digitalmarket.com",
+    "currency": "USD",
+    "language": "العربية",
+    "timezone": "الرياض"
+  },
+  "about": {
+    "heroTitle": "من نحن",
+    "heroSubtitle": "نحن فريق من المتخصصين في التكنولوجيا والتصميم",
+    "heroDescription": "مرحباً بك في عالم الإبداع الرقمي! نحن مجموعة من المبدعين والمطورين الذين يؤمنون بقوة التكنولوجيا في تحويل الأفكار إلى واقع ملموس.",
+    "missionTitle": "مهمتنا",
+    "missionDescription": "نسعى لتقديم أفضل الحلول الرقمية المبتكرة التي تساعد العملاء على تحقيق أهدافهم بأعلى جودة وأحدث التقنيات المتاحة.",
+    "visionTitle": "رؤيتنا",
+    "visionDescription": "أن نكون الرائدين في مجال الحلول الرقمية على المستوى الإقليمي، ونساهم في رقمنة الأعمال وتطوير المجتمع التقني.",
+    "valuesTitle": "قيمنا",
+    "values": [
+      {
+        "title": "الجودة",
+        "description": "نلتزم بتقديم أعلى معايير الجودة في جميع منتجاتنا وخدماتنا"
+      },
+      {
+        "title": "الابتكار",
+        "description": "نبحث دائماً عن الحلول المبتكرة والتقنيات الحديثة لخدمة عملائنا"
+      },
+      {
+        "title": "الشفافية",
+        "description": "نؤمن بالتعامل الشفاف والصادق مع جميع عملائنا وشركائنا"
+      },
+      {
+        "title": "التميز",
+        "description": "نسعى للتميز في كل ما نقوم به ونضع معايير عالية لأنفسنا"
+      }
+    ],
+    "teamTitle": "فريق العمل",
+    "teamDescription": "فريق متخصص من الخبراء والمطورين المحترفين",
+    "team": [
+      {
+        "id": 1,
+        "name": "عاصم حسن ",
+        "role": "المؤسس والرئيس التنفيذي",
+        "bio": "خبير في التكنولوجيا المالية مع أكثر من 10 سنوات من الخبرة",
+        "image": "/uploads/team/1758134617326-WhatsApp_Image_2025-05-16_at_20.40.00_66d0d8a0.jpg",
+        "social": {
+          "linkedin": "https://linkedin.com/in/ahmed-mohamed",
+          "twitter": "https://twitter.com/ahmed_mohamed",
+          "email": "ahmed@company.com"
+        }
+      },
+      {
+        "id": 2,
+        "name": "حسن احمد",
+        "role": "المدير العام ",
+        "bio": " مهندس برمجيات متخصص في تطوير تطبيقات الويب الحديثة والادارة العامة ",
+        "image": "/uploads/team/1758136557817-Screenshot_2025-09-17_221545.png",
+        "social": {
+          "linkedin": "https://linkedin.com/in/sara-ahmed",
+          "github": "https://github.com/sara-ahmed",
+          "email": "sara@company.com"
+        }
+      }
+    ],
+    "contactTitle": "تواصل معنا",
+    "contactDescription": "نحن هنا لمساعدتك في تحقيق أهدافك الرقمية",
+    "phone": "+966 50 123 4567",
+    "email": "info@company.com",
+    "address": "الرياض، المملكة العربية السعودية",
+    "socialLinks": {
+      "twitter": "https://twitter.com/company",
+      "linkedin": "https://linkedin.com/company",
+      "instagram": "https://instagram.com/company"
+    }
+  },
+  "notifications": {
+    "emailNewOrder": true,
+    "emailNewUser": true,
+    "emailLowStock": false,
+    "pushNotifications": true,
+    "smsNotifications": false
+  },
+  "payment": {
+    "paypalEnabled": true,
+    "stripeEnabled": true,
+    "bankTransferEnabled": false,
+    "taxRate": 15,
+    "shippingFee": 0
+  },
+  "security": {
+    "twoFactorAuth": false,
+    "sessionTimeout": 60,
+    "passwordComplexity": true,
+    "ipWhitelist": false
+  }
+}

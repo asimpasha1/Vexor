@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار API التسجيل - وضع الاختبار</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+        <h1 class="text-2xl font-bold mb-6 text-center">اختبار API التسجيل</h1>
+        <div class="bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 rounded mb-4">
+            <p class="text-sm">⚠️ هذا وضع اختبار - لا يتم حفظ البيانات فعلياً</p>
+        </div>
+        
+        <form id="testForm" class="space-y-4">
+            <div>
+                <label class="block text-sm font-medium mb-2">الاسم</label>
+                <input type="text" id="name" value="أحمد محمد" 
+                       class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500">
+            </div>
+            
+            <div>
+                <label class="block text-sm font-medium mb-2">البريد الإلكتروني</label>
+                <input type="email" id="email" 
+                       class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500">
+            </div>
+            
+            <div>
+                <label class="block text-sm font-medium mb-2">كلمة المرور</label>
+                <input type="password" id="password" value="123456"
+                       class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500">
+            </div>
+            
+            <button type="submit" 
+                    class="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition-colors">
+                اختبار إنشاء حساب
+            </button>
+        </form>
+        
+        <div id="result" class="mt-4 p-3 rounded-lg hidden"></div>
+        
+        <div class="mt-6 text-center">
+            <p class="text-sm text-gray-600">
+                طلب POST إلى: <br>
+                <code class="bg-gray-100 px-2 py-1 rounded text-xs">
+                    /api/auth/register-test
+                </code>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Generate random email
+        document.getElementById('email').value = 'test' + Math.floor(Math.random() * 10000) + '@example.com';
+        
+        document.getElementById('testForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            const resultDiv = document.getElementById('result');
+            resultDiv.classList.remove('hidden');
+            resultDiv.innerHTML = '<div class="animate-spin w-5 h-5 border-2 border-blue-500 border-t-transparent rounded-full mx-auto"></div>';
+            
+            try {
+                console.log('Sending request to /api/auth/register-test');
+                console.log('Data:', { name, email, password });
+                
+                const response = await fetch('/api/auth/register-test', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ name, email, password }),
+                });
+                
+                console.log('Response status:', response.status);
+                console.log('Response headers:', [...response.headers.entries()]);
+                
+                const responseText = await response.text();
+                console.log('Response text:', responseText);
+                
+                let data;
+                try {
+                    data = JSON.parse(responseText);
+                } catch (parseError) {
+                    console.error('JSON parse error:', parseError);
+                    throw new Error('الاستجابة ليست JSON صحيح: ' + responseText);
+                }
+                
+                if (response.ok) {
+                    resultDiv.className = 'mt-4 p-3 rounded-lg bg-green-100 text-green-800';
+                    resultDiv.innerHTML = `
+                        <h3 class="font-semibold">✅ تم الاختبار بنجاح!</h3>
+                        <div class="mt-2 text-sm space-y-1">
+                            <p><strong>المعرف:</strong> ${data.user.id}</p>
+                            <p><strong>الاسم:</strong> ${data.user.name}</p>
+                            <p><strong>البريد:</strong> ${data.user.email}</p>
+                            <p><strong>الدور:</strong> ${data.user.role}</p>
+                            <p><strong>تاريخ الإنشاء:</strong> ${new Date(data.user.createdAt).toLocaleString('ar')}</p>
+                            <p class="text-xs mt-2 text-green-600">${data.message}</p>
+                        </div>
+                    `;
+                } else {
+                    resultDiv.className = 'mt-4 p-3 rounded-lg bg-red-100 text-red-800';
+                    resultDiv.innerHTML = `
+                        <h3 class="font-semibold">❌ خطأ في الاختبار</h3>
+                        <p class="mt-1 text-sm">${data.error || 'حدث خطأ غير محدد'}</p>
+                        <p class="mt-1 text-xs">كود الاستجابة: ${response.status}</p>
+                        ${data.details ? `<p class="mt-1 text-xs">التفاصيل: ${data.details}</p>` : ''}
+                    `;
+                }
+                }
+            } catch (error) {
+                console.error('Request error:', error);
+                resultDiv.className = 'mt-4 p-3 rounded-lg bg-red-100 text-red-800';
+                resultDiv.innerHTML = `
+                    <h3 class="font-semibold">❌ خطأ في الاتصال</h3>
+                    <p class="mt-1 text-sm">${error.message}</p>
+                    <p class="mt-1 text-xs">تحقق من console للمزيد من التفاصيل</p>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>

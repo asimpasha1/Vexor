@@ -1,0 +1,34 @@
+[
+  {
+    "id": "1757963143337",
+    "chatId": "1757913785439",
+    "userEmail": "admin@digitalmarket.com",
+    "rating": 5,
+    "comment": "",
+    "createdAt": "2025-09-15T19:05:43.337Z"
+  },
+  {
+    "id": "1757967061827",
+    "chatId": "1757913785439",
+    "userEmail": "admin@digitalmarket.com",
+    "rating": 5,
+    "comment": "",
+    "createdAt": "2025-09-15T20:11:01.827Z"
+  },
+  {
+    "id": "1759587167998",
+    "chatId": "1759586931100",
+    "userEmail": "admin@digitalmarket.com",
+    "rating": 5,
+    "comment": "",
+    "createdAt": "2025-10-04T14:12:47.998Z"
+  },
+  {
+    "id": "1759657985408",
+    "chatId": "1759657976238",
+    "userEmail": "admin@digitalmarket.com",
+    "rating": 5,
+    "comment": "ثصقبصثق",
+    "createdAt": "2025-10-05T09:53:05.408Z"
+  }
+]

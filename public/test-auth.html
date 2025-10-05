@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار نظام المصادقة</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap');
+        body { font-family: 'Cairo', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="min-h-screen flex items-center justify-center">
+        <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+            <h1 class="text-2xl font-bold mb-6 text-center">اختبار تسجيل حساب جديد</h1>
+            
+            <form id="testForm" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium mb-2">الاسم</label>
+                    <input type="text" id="name" value="أحمد محمد" 
+                           class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500">
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium mb-2">البريد الإلكتروني</label>
+                    <input type="email" id="email" value="ahmed@example.com"
+                           class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500">
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium mb-2">كلمة المرور</label>
+                    <input type="password" id="password" value="123456"
+                           class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500">
+                </div>
+                
+                <button type="submit" 
+                        class="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition-colors">
+                    إنشاء حساب
+                </button>
+            </form>
+            
+            <div id="result" class="mt-4 p-3 rounded-lg hidden"></div>
+            
+            <div class="mt-6 pt-6 border-t">
+                <h2 class="text-lg font-semibold mb-4">اختبار تسجيل الدخول</h2>
+                <form id="loginForm" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-2">البريد الإلكتروني</label>
+                        <input type="email" id="loginEmail" value="ahmed@example.com"
+                               class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-green-500">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium mb-2">كلمة المرور</label>
+                        <input type="password" id="loginPassword" value="123456"
+                               class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-green-500">
+                    </div>
+                    
+                    <button type="submit" 
+                            class="w-full bg-green-600 text-white p-3 rounded-lg hover:bg-green-700 transition-colors">
+                        تسجيل دخول
+                    </button>
+                </form>
+                
+                <div id="loginResult" class="mt-4 p-3 rounded-lg hidden"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Test Registration
+        document.getElementById('testForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            const resultDiv = document.getElementById('result');
+            resultDiv.classList.remove('hidden');
+            resultDiv.innerHTML = '<div class="animate-spin w-5 h-5 border-2 border-blue-500 border-t-transparent rounded-full mx-auto"></div>';
+            
+            try {
+                const response = await fetch('/api/auth/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ name, email, password }),
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    resultDiv.className = 'mt-4 p-3 rounded-lg bg-green-100 text-green-800';
+                    resultDiv.innerHTML = `
+                        <h3 class="font-semibold">تم إنشاء الحساب بنجاح!</h3>
+                        <p>المعرف: ${data.user.id}</p>
+                        <p>الاسم: ${data.user.name}</p>
+                        <p>البريد: ${data.user.email}</p>
+                        <p>الدور: ${data.user.role}</p>
+                    `;
+                } else {
+                    resultDiv.className = 'mt-4 p-3 rounded-lg bg-red-100 text-red-800';
+                    resultDiv.innerHTML = `
+                        <h3 class="font-semibold">خطأ في إنشاء الحساب</h3>
+                        <p>${data.error}</p>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.className = 'mt-4 p-3 rounded-lg bg-red-100 text-red-800';
+                resultDiv.innerHTML = `
+                    <h3 class="font-semibold">خطأ في الاتصال</h3>
+                    <p>${error.message}</p>
+                `;
+            }
+        });
+
+        // Test Login
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            const resultDiv = document.getElementById('loginResult');
+            resultDiv.classList.remove('hidden');
+            resultDiv.innerHTML = '<div class="animate-spin w-5 h-5 border-2 border-green-500 border-t-transparent rounded-full mx-auto"></div>';
+            
+            try {
+                const response = await fetch('/api/auth/callback/credentials', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: new URLSearchParams({
+                        email: email,
+                        password: password,
+                        csrfToken: '', // In production, get this from NextAuth
+                        callbackUrl: '/dashboard',
+                        json: 'true'
+                    }),
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok && data.url) {
+                    resultDiv.className = 'mt-4 p-3 rounded-lg bg-green-100 text-green-800';
+                    resultDiv.innerHTML = `
+                        <h3 class="font-semibold">تم تسجيل الدخول بنجاح!</h3>
+                        <p>سيتم توجيهك إلى لوحة التحكم...</p>
+                        <a href="${data.url}" class="inline-block mt-2 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+                            انتقل إلى لوحة التحكم
+                        </a>
+                    `;
+                } else {
+                    resultDiv.className = 'mt-4 p-3 rounded-lg bg-red-100 text-red-800';
+                    resultDiv.innerHTML = `
+                        <h3 class="font-semibold">خطأ في تسجيل الدخول</h3>
+                        <p>${data.error || 'البيانات غير صحيحة'}</p>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.className = 'mt-4 p-3 rounded-lg bg-red-100 text-red-800';
+                resultDiv.innerHTML = `
+                    <h3 class="font-semibold">خطأ في الاتصال</h3>
+                    <p>${error.message}</p>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>

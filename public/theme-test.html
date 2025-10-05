@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار الوضع المظلم</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
+    <div class="min-h-screen flex items-center justify-center">
+        <div class="text-center space-y-6 p-8">
+            <h1 class="text-4xl font-bold">اختبار الوضع المظلم</h1>
+            <p class="text-xl">إذا رأيت هذا النص، فالوضع يعمل بشكل صحيح</p>
+            
+            <button 
+                id="theme-toggle" 
+                class="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors"
+                onclick="toggleTheme()"
+            >
+                تبديل الوضع
+            </button>
+            
+            <div class="mt-4 p-4 bg-gray-100 dark:bg-gray-800 rounded-lg">
+                <p>هذا صندوق اختبار للتأكد من تغيير الألوان</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            const html = document.documentElement;
+            const isDark = html.classList.contains('dark');
+            
+            if (isDark) {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                console.log('Switched to light mode');
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                console.log('Switched to dark mode');
+            }
+        }
+
+        // تحميل الثيم المحفوظ
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.documentElement.classList.add('dark');
+            }
+        });
+    </script>
+</body>
+</html>

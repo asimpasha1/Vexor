@@ -1,0 +1,190 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  image         String?
+  password      String?   // Added password field for credentials auth
+  role          Role      @default(USER)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  accounts      Account[]
+  sessions      Session[]
+  products      Product[]
+  
+  // علاقات نظام الدعم الفني
+  assignedContacts    ContactForm[]     @relation("AssignedToUser")
+  contactResponses    ContactResponse[]
+  assignedChats       LiveChat[]        @relation("AssignedToUser") 
+  chatMessages        ChatMessage[]
+}
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  price       Float
+  image       String?
+  fileUrl     String?
+  category    String
+  featured    Boolean  @default(false)
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  authorId    String
+  author      User     @relation(fields: [authorId], references: [id])
+  orders      Order[]  // علاقة مع الطلبات
+}
+
+model Order {
+  id              String      @id
+  productId       String
+  product         Product     @relation(fields: [productId], references: [id])
+  customerName    String
+  customerEmail   String
+  customerPhone   String
+  customerAddress String
+  amount          Float
+  status          OrderStatus @default(PENDING)
+  paymentId       String?
+  paymentMethod   PaymentMethod
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+}
+
+enum OrderStatus {
+  PENDING
+  COMPLETED
+  FAILED
+  REFUNDED
+}
+
+enum PaymentMethod {
+  CARD
+  PAYPAL
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+// نماذج نظام الدعم الفني والدردشة المباشرة
+model ContactForm {
+  id          String            @id @default(cuid())
+  name        String
+  email       String
+  subject     String
+  message     String
+  status      ContactFormStatus @default(OPEN)
+  priority    Priority          @default(MEDIUM)
+  assignedTo  String?
+  assignee    User?             @relation("AssignedToUser", fields: [assignedTo], references: [id])
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+  responses   ContactResponse[]
+}
+
+model ContactResponse {
+  id              String      @id @default(cuid())
+  contactFormId   String
+  contactForm     ContactForm @relation(fields: [contactFormId], references: [id], onDelete: Cascade)
+  message         String
+  isAdminResponse Boolean     @default(false)
+  authorId        String?
+  author          User?       @relation(fields: [authorId], references: [id])
+  createdAt       DateTime    @default(now())
+}
+
+model LiveChat {
+  id          String         @id @default(cuid())
+  visitorId   String         // معرف فريد للزائر (session أو guest)
+  visitorName String?
+  email       String?
+  status      ChatStatus     @default(ACTIVE)
+  startedAt   DateTime       @default(now())
+  endedAt     DateTime?
+  assignedTo  String?
+  assignee    User?          @relation("AssignedToUser", fields: [assignedTo], references: [id])
+  messages    ChatMessage[]
+}
+
+model ChatMessage {
+  id          String    @id @default(cuid())
+  chatId      String
+  chat        LiveChat  @relation(fields: [chatId], references: [id], onDelete: Cascade)
+  message     String
+  isFromAdmin Boolean   @default(false)
+  authorId    String?
+  author      User?     @relation(fields: [authorId], references: [id])
+  sentAt      DateTime  @default(now())
+  readAt      DateTime?
+}
+
+enum ContactFormStatus {
+  OPEN
+  IN_PROGRESS
+  RESOLVED
+  CLOSED
+}
+
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+}
+
+enum ChatStatus {
+  ACTIVE
+  ENDED
+  TRANSFERRED
+}

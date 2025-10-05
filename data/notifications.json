@@ -1,0 +1,18 @@
+{
+  "_meta": {
+    "markAllReadAt": "2025-09-15T19:41:44.066Z",
+    "markAllReadBy": "admin@digitalmarket.com",
+    "markAllReadTimestamp": 1757965304066
+  },
+  "chat-1757881230627": {
+    "read": true,
+    "readAt": "2025-09-15T19:41:39.520Z",
+    "readBy": "admin@digitalmarket.com"
+  },
+  "chat-1757913276819": {
+    "read": true,
+    "readAt": "2025-09-15T19:41:39.785Z",
+    "readBy": "admin@digitalmarket.com"
+  },
+  "_markAllRead": true
+}
