@@ -1,13 +1,9 @@
 {
-  "buildCommand": "npm run vercel-build",
-  "outputDirectory": ".next",
-  "framework": "nextjs",
-  "installCommand": "npm install && prisma generate",
-  "devCommand": "npm run dev",
+  "buildCommand": "prisma generate && next build",
+  "installCommand": "npm install",
+  "framework": null,
   "env": {
-    "NODE_ENV": "production",
-    "DATABASE_URL": "file:./dev.db",
-    "PRISMA_GENERATE_DATAPROXY": "true"
+    "SKIP_ENV_VALIDATION": "1"
   },
   "functions": {
     "pages/api/**/*.js": {
