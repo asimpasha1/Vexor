@@ -5,6 +5,15 @@ import { getAllTempUsers } from "@/lib/temp-users"
 
 export async function GET(request: NextRequest) {
   try {
+    // في بيئة الإنتاج، استخدم المستخدمين المؤقتين فقط
+    if (process.env.NODE_ENV === 'production') {
+      const tempUsers = getAllTempUsers()
+      return NextResponse.json({ 
+        users: tempUsers,
+        source: 'temp-storage' 
+      })
+    }
+
     // التحقق من جلسة المستخدم
     const session = await getServerSession(authOptions)
     
