@@ -4,11 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "prisma generate && next build",
-    "vercel-build": "prisma generate && next build",
+    "build": "npx prisma generate && npx next build",
+    "vercel-build": "npx prisma generate && npx next build",
     "start": "next start",
     "lint": "eslint",
-    "postinstall": "prisma generate",
+    "postinstall": "npx prisma generate",
     "db:seed": "tsx prisma/seed.ts",
     "db:clear": "tsx prisma/clear.ts"
   },
