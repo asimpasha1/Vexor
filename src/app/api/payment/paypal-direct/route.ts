@@ -29,24 +29,24 @@ export async function GET(request: NextRequest) {
       return NextResponse.redirect(paypalUrl, 302)
     } catch (redirectError) {
       // محاولة 2: صفحة HTML بسيطة مع meta refresh
-      const html = `<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0;url=${paypalUrl}">
-    <title>جارٍ التحويل إلى PayPal...</title>
-</head>
-<body>
-    <script>
-        // محاولة JavaScript أيضاً
-        window.location.replace('${paypalUrl}');
-    </script>
-    <p>جارٍ التحويل إلى PayPal...</p>
-    <p>إذا لم يتم التحويل تلقائياً، <a href="${paypalUrl}">اضغط هنا</a></p>
-</body>
-</html>`
+      const htmlContent = ['<!DOCTYPE html>',
+        '<' + 'html>',
+        '<head>',
+        '    <meta charset="UTF-8">',
+        `    <meta http-equiv="refresh" content="0;url=${paypalUrl}">`,
+        '    <title>جارٍ التحويل إلى PayPal...</title>',
+        '</head>',
+        '<body>',
+        '    <script>',
+        `        window.location.replace('${paypalUrl}');`,
+        '    </script>',
+        '    <p>جارٍ التحويل إلى PayPal...</p>',
+        `    <p>إذا لم يتم التحويل تلقائياً، <a href="${paypalUrl}">اضغط هنا</a></p>`,
+        '</body>',
+        '</' + 'html>'
+      ].join('\n');
       
-      return new NextResponse(html, {
+      return new NextResponse(htmlContent, {
         headers: {
           'Content-Type': 'text/html; charset=utf-8',
         },

@@ -5,11 +5,11 @@ export async function POST(request: NextRequest) {
     const { productId, customerEmail, amount, itemName } = await request.json()
     
     // إنشاء صفحة وسيطة تُرسل المستخدم لـ PayPal بطريقة مختلفة
-    const html = `
-<!DOCTYPE html>
-<html dir="rtl" lang="ar">
-<head>
-    <meta charset="UTF-8">
+    const htmlTemplate = [
+      '<!DOCTYPE html>',
+      '<' + 'html dir="rtl" lang="ar">',
+      '<head>',
+      '    <meta charset="UTF-8">',
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تحويل إلى PayPal - المتجر الرقمي</title>
     <style>
