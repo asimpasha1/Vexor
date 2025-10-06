@@ -3,19 +3,6 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ['lucide-react']
   },
-  webpack: (config, { isServer, dev }) => {
-    // Force disable turbopack
-    if (isServer && !dev) {
-      config.externals = config.externals || [];
-      config.externals.push('@prisma/client');
-    }
-    
-    // Ignore Html import errors
-    config.resolve = config.resolve || {};
-    config.resolve.alias = config.resolve.alias || {};
-    
-    return config;
-  },
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -25,15 +12,10 @@ const nextConfig = {
   env: {
     SKIP_ENV_VALIDATION: "1"
   },
-  output: 'standalone',
-  // تجاهل جميع أخطاء التجميع
-  onDemandEntries: {
-    maxInactiveAge: 25 * 1000,
-    pagesBufferLength: 2,
-  },
-  // تجاهل مشاكل HTML المتعلقة بـ next/document
-  redirects: async () => {
-    return []
+  output: 'export',
+  trailingSlash: true,
+  images: {
+    unoptimized: true
   }
 }
 

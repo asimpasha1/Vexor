@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "npx prisma generate && npx next build",
-    "vercel-build": "npx prisma generate && npx next build",
+    "dev": "next dev",
+    "build": "next build",
+    "build:netlify": "next build",
     "start": "next start",
     "lint": "eslint",
-    "postinstall": "npx prisma generate",
+    "postinstall": "echo 'Skip prisma for static build'",
     "db:seed": "tsx prisma/seed.ts",
     "db:clear": "tsx prisma/clear.ts"
   },
