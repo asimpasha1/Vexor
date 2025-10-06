@@ -11,11 +11,6 @@ const nextConfig = {
   },
   env: {
     SKIP_ENV_VALIDATION: "1"
-  },
-  output: 'export',
-  trailingSlash: true,
-  images: {
-    unoptimized: true
   }
 }
 

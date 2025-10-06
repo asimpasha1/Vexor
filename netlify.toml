@@ -1,6 +1,6 @@
 [build]
-  publish = "out"
-  command = "npm install && npm run build:netlify"
+  publish = ".next"
+  command = "npm run build:netlify"
 
 [build.environment]
   NODE_ENV = "production"
